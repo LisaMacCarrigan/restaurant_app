@@ -89,6 +89,22 @@
 
         }
 
+        function testUpdate() {
+            //ARRANGE
+            $id = null;
+            $type = "Korean";
+            $test_cuisine = new Cuisine($id, $type);
+            $test_cuisine->save();
+
+            $new_type = "Japanese";
+
+            //ACT
+            $test_cuisine->update($new_type);
+
+            //ASSERT
+            $this->assertEquals("Japanese", $test_cuisine->getCuisineType());
+        }
+
     }
 
 

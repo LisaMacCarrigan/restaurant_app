@@ -55,6 +55,11 @@
             }
         }
 
+        function update($new_type){
+            $GLOBALS['DB']->exec("UPDATE cuisine SET cuisine_type = '{$new_type}' WHERE id = {$this->getId()};");
+            $this->setCuisineType($new_type);
+        }
+
     }
 
 ?>
