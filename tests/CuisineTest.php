@@ -34,6 +34,45 @@
 
         }
 
+        function test_getAll() {
+
+            // ARRANGE
+            $id = null;
+            $cuisine_type1 = "Tex-Mex";
+            $cuisine_type2 = "Ethiopian";
+            $test_cuisine1 = new Cuisine($id, $cuisine_type1);
+            $test_cuisine2 = new Cuisine($id, $cuisine_type2);
+            $test_cuisine1->save();
+            $test_cuisine2->save();
+
+            // ACT
+            $result = Cuisine::getAll();
+
+            // ASSERT
+            $this->assertEquals([$test_cuisine1, $test_cuisine2], $result);
+
+        }
+
+        function test_deleteAll() {
+
+            // ARRANGE
+            $id = null;
+            $cuisine_type1 = "Tex-Mex";
+            $cuisine_type2 = "Ethiopian";
+            $test_cuisine1 = new Cuisine($id, $cuisine_type1);
+            $test_cuisine2 = new Cuisine($id, $cuisine_type2);
+            $test_cuisine1->save();
+            $test_cuisine2->save();
+
+            // ACT
+            Cuisine::deleteAll();
+            $result = Cuisine::getAll();
+
+            // ASSERT
+            $this->assertEquals([], $result);
+
+        }
+
     }
 
 
