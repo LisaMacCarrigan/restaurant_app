@@ -24,12 +24,29 @@
             return $this->name;
         }
 
+        function setCuisineId($cuisine_id_input) {
+            $this->cuisine_id = $cuisine_id_input;
+        }
+
         function getCuisineId() {
             return $this->cuisine_id;
         }
 
         static function getAll() {
+            $returned_restaurants = $GLOBALS['DB']->query("SELECT * FROM restaurant;");
 
+            $restaurants = array();
+
+            foreach($returned_restaurants as $restaurant) {
+
+                $id = $restaurant['id'];
+                $name = $restaurant['name'];
+                $cuisine_id = $restaurant['cuisine_id'];
+                $new_restaurant = new Restaurant($id, $name, $cuisine_id);
+                array_push($restaurants, $new_restaurant);
+            }
+
+            return $restaurants;
         }
 
         function save() {
@@ -39,6 +56,18 @@
 
         static function deleteAll() {
             $GLOBALS['DB']->exec("DELETE FROM restaurant;");
+        }
+
+        static function find($search_id) {
+            $found_restaurant = null;
+            $restaurants = Restaurant::getAll();
+            foreach($restaurants as $restaurant) {
+                $restaurant_id = $restaurant->getId();
+                if ($restaurant_id == $search_id) {
+                    $found_restaurant = $restaurant;
+                }
+                return $found_restaurant;
+            }
         }
 
     }

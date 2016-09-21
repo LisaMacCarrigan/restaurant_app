@@ -73,6 +73,22 @@
 
         }
 
+        function test_find() {
+
+            // ARRANGE
+            $id = null;
+            $cuisine_type = "Tex-Mex";
+            $test_cuisine = new Cuisine($id, $cuisine_type);
+            $test_cuisine->save();
+
+            // ACT
+            $result = Cuisine::find($test_cuisine->getId());
+
+            // ASSERT
+            $this->assertEquals($test_cuisine, $result);
+
+        }
+
     }
 
 
