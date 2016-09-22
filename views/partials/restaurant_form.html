@@ -1,14 +1,15 @@
 <form action="/restaurants" method="post">
     <br>
     <br>
-    <input id="cuisine_id" name="cuisine_id" type="hidden" value="{{ cuisine.getId() }}">
 
     <label for="restaurant">Enter The Restaurant's Name:</label>
-    <input id="restaurant" class="form-control" name="restaurant" type="text"><br>
+    <input id="restaurant" class="form-control" name="restaurant" type="text" required><br>
 
-    <label for="restaurant">Enter The Restaurant's Rating:</label>
-    <input id="rating" class="form-control" name="rating" type="number">
+    <label for="rating">Enter The Restaurant's Rating:</label>
+    <input id="rating" class="form-control" name="rating" type="number" step="1" min="1" max="5" required>
     <br>
+    <select>
+    </select>
 
     <button type="submit" class="btn btn-success">Submit</button>
 </form>

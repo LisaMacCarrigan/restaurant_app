@@ -34,10 +34,6 @@
             return $this->name;
         }
 
-        function setCuisineId($cuisine_id_input) {
-            $this->cuisine_id = $cuisine_id_input;
-        }
-
         function getCuisineId() {
             return $this->cuisine_id;
         }

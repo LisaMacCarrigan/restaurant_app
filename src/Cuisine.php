@@ -22,6 +22,24 @@
             return $this->cuisine_type;
         }
 
+        function getRestaurants() {
+            $restaurants = array();
+
+            $returned_restaurants = $GLOBALS['DB']->query("SELECT * FROM restaurant WHERE cuisine_id = {$this->getId()};");
+
+            foreach ($returned_restaurants as $restaurant) {
+                $name = $restaurant["name"];
+                $cuisine_id = $restaurant["cuisine_id"];
+                $rating = $restaurant["rating"];
+                $id = $restaurant["id"];
+
+                $new_restaurant = new Restaurant($name, $cuisine_id, $rating, $id);
+                array_push($restaurants, $new_restaurant);
+            }
+
+            return $restaurants;
+        }
+
         static function getAll() {
             $returned_cuisines = $GLOBALS['DB']->query("SELECT * FROM cuisine;");
             $cuisines = array();

@@ -35,7 +35,7 @@
             $name = "El Camino";
             $cuisine_id = $test_cuisine->getId();
             $rating = 1;
-            $test_restaurant = new Restaurant($id, $name, $cuisine_id, $rating);
+            $test_restaurant = new Restaurant($name, $cuisine_id, $rating, $id);
             $test_restaurant->save();
 
             // ACT
@@ -61,13 +61,13 @@
             $name = "El Camino";
             $cuisine_id1 = $test_cuisine->getId();
             $rating1 = 5;
-            $test_restaurant1 = new Restaurant($id, $name, $cuisine_id1, $rating1);
+            $test_restaurant1 = new Restaurant($name, $cuisine_id1, $rating1, $id);
             $test_restaurant1->save();
 
             $name = "Dos Segundos";
             $cuisine_id2 = $test_cuisine->getId();
             $rating2 = 2;
-            $test_restaurant2 = new Restaurant($id, $name, $cuisine_id2, $rating2);
+            $test_restaurant2 = new Restaurant($name, $cuisine_id2, $rating2, $id);
             $test_restaurant2->save();
 
             // ACT
@@ -122,7 +122,7 @@
             $name = "El Gordos";
             $cuisine_id = $test_cuisine->getId();
             $rating = 5;
-            $test_restaurant = new Restaurant($id, $name, $cuisine_id, $rating);
+            $test_restaurant = new Restaurant($name, $cuisine_id, $rating, $id);
             $test_restaurant->save();
 
             // ACT

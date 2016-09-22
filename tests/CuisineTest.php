@@ -15,6 +15,7 @@
     class CuisineTest extends PHPUnit_Framework_TestCase {
 
         protected function tearDown() {
+            Restaurant::deleteAll();
             Cuisine::deleteAll();
         }
 
@@ -103,6 +104,38 @@
 
             //ASSERT
             $this->assertEquals("Japanese", $test_cuisine->getCuisineType());
+        }
+
+        function testGetRestaurants() {
+
+            // ARRANGE
+
+            // create a cuisine
+            $c_id = null;
+            $c_type = "Greek";
+            $test_cuisine = new Cuisine($c_type, $c_id);
+            $test_cuisine->save();
+
+            // create a restaurant
+            $id = null;
+            $name = "Kostas";
+            $cuisine_id = $test_cuisine->getId();
+            $rating = '5';
+            $test_restaurant = new Restaurant($name, $cuisine_id, $rating, $id);
+            $test_restaurant->save();
+
+            $name2 = "Feta";
+            $cuisine_id2 = $test_cuisine->getId();
+            $rating2 = '5';
+            $test_restaurant2 = new Restaurant($name2, $cuisine_id2, $rating2, $id);
+            $test_restaurant2->save();
+
+            // ACT
+            $result = $test_cuisine->getRestaurants();
+
+            // ASSERT
+            $this->assertEquals([$test_restaurant, $test_restaurant2], $result);
+
         }
 
     }
