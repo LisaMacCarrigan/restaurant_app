@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    {% include "partials/header.html" %}
+    <body>
+        <div class="container">
+            <h1>Restaurants</h1>
+
+            {% if restaurants is not empty %}
+                <p>Restaurants options listed below:</p>
+                <ul>
+                    {% for restaurant in restaurants %}
+                        <li>{{ restaurant.getName }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% include "partials/restaurant_form.html" %}
+
+            <br>
+            <p><a href='/'>Home</a></p>
+        </div>
+    </body>
+</html>

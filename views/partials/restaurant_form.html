@@ -1,0 +1,18 @@
+<form action="/restaurants" method="post">
+    <br>
+    <br>
+    <input id="cuisine_id" name="cuisine_id" type="hidden" value="{{ cuisine.getId() }}">
+
+    <label for="restaurant">Enter The Restaurant's Name:</label>
+    <input id="restaurant" class="form-control" name="restaurant" type="text"><br>
+
+    <label for="restaurant">Enter The Restaurant's Rating:</label>
+    <input id="rating" class="form-control" name="rating" type="number">
+    <br>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+<br><hr>
+<form action='/delete_restaurants' method='post'>
+    <button class="btn btn-danger" type='submit'>Delete All Restaurants</button>
+</form>

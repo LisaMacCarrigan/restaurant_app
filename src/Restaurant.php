@@ -7,11 +7,11 @@
         private $cuisine_id;
         private $rating;
 
-        function __construct($id = null, $name_input, $cuisine_id_input, $rating_input) {
-            $this->id = $id;
+        function __construct($name_input, $cuisine_id_input, $rating_input, $id = null) {
             $this->name = $name_input;
             $this->cuisine_id = $cuisine_id_input;
             $this->rating = $rating_input;
+            $this->id = $id;
         }
 
         function getRating() {
@@ -53,7 +53,7 @@
                 $name = $restaurant['name'];
                 $cuisine_id = $restaurant['cuisine_id'];
                 $rating = $restaurant['rating'];
-                $new_restaurant = new Restaurant($id, $name, $cuisine_id, $rating);
+                $new_restaurant = new Restaurant($name, $cuisine_id, $rating, $id);
                 array_push($restaurants, $new_restaurant);
             }
 

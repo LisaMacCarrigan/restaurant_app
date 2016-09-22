@@ -17,11 +17,7 @@
         return $app["twig"]->render("index.html.twig");
     });
 
-
-
-    // , array("restaurants" => Restaurant::getAll(), 'cuisines' => Cuisine::getAll()));
-    // });
-
+//======================Cuisines: ====================================
     $app->get("/cuisines", function() use ($app) {
         return $app["twig"]->render("cuisines.html.twig");
     });
@@ -36,6 +32,22 @@
         Cuisine::deleteAll();
         return $app["twig"]->render("cuisines.html.twig");
     });
+//=====================Restaurants: ===============================
+    $app->get("/restaurants", function() use ($app) {
+        return $app["twig"]->render("restaurants.html.twig");
+    });
+
+    $app->post("/restaurants", function() use ($app) {
+        $restaurant = new Restaurant($_POST['restaurant'], $_POST['cuisine_id'], $_POST['rating']);
+        $restaurant->save();
+        return $app["twig"]->render("restaurants.html.twig", array('restaurants' => Restaurant::getAll()));
+    });
+
+    $app->post("/delete_restaurants", function() use ($app) {
+        Restaurant::deleteAll();
+        return $app["twig"]->render("restaurants.html.twig");
+    });
+
 
     return $app;
 
