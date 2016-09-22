@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
-    {% include "partials/header.html" %}
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <title>Restaurant App</title>
+    </head>
     <body>
         <div class="container">
             <h1>Cuisines</h1>
@@ -11,10 +15,21 @@
                     {% for cuisine in cuisines %}
                         <li>{{ cuisine.getCuisineType }}</li>
                     {% endfor %}
-                </ul>    
+                </ul>
             {% endif %}
 
-            {% include "partials/cuisine_form.html" %}
+            <form action="/cuisines" method="post">
+                <br>
+                <br>
+                <label for="cuisine">Enter The Restaurant's Cuisine:</label>
+                <input id="cuisine" class="form-control" name="cuisine" type="text">
+                <br>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+            <br><hr>
+            <form action='/delete_cuisines' method='post'>
+                <button class="btn btn-danger" type='submit'>Delete All Cuisines</button>
+            </form>
 
             <br>
             <p><a href='/'>Home</a></p>

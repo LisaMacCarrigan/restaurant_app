@@ -40,14 +40,16 @@
     $app->post("/restaurants", function() use ($app) {
         $restaurant = new Restaurant($_POST['restaurant'], $_POST['cuisine_id'], $_POST['rating']);
         $restaurant->save();
-        $cuisine_id = $_POST['cuisine_id'];
-        $cuisine = Cuisine::find($cuisine_id);
-        return $app["twig"]->render("restaurants.html.twig", array('cuisines' => Cuisine::getAll(), 'restaurants' => $cuisine->getRestaurants()));
+        $chosen_cuisine = Cuisine::find($_POST['cuisine_id']);
+        var_dump($_POST['cuisine_id']);
+        var_dump($chosen_cuisine);
+        var_dump($restaurant);
+        return $app["twig"]->render("restaurants.html.twig", array('cuisines' => Cuisine::getAll(), 'restaurants' => $chosen_cuisine->getRestaurants()));
     });
 
     $app->post("/delete_restaurants", function() use ($app) {
         Restaurant::deleteAll();
-        return $app["twig"]->render("restaurants.html.twig");
+        return $app["twig"]->render("restaurants.html.twig", array("cuisines" => Cuisine::getAll()));
     });
 
     return $app;
