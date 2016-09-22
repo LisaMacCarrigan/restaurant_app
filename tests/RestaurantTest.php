@@ -27,14 +27,15 @@
             // create a cuisine
             $c_id = null;
             $c_type = "Tex-Mex";
-            $test_cuisine = new Cuisine($c_id, $c_type);
+            $test_cuisine = new Cuisine($c_type, $c_id);
             $test_cuisine->save();
 
             // create a restaurant
             $id = null;
             $name = "El Camino";
             $cuisine_id = $test_cuisine->getId();
-            $test_restaurant = new Restaurant($id, $name, $cuisine_id);
+            $rating = 1;
+            $test_restaurant = new Restaurant($id, $name, $cuisine_id, $rating);
             $test_restaurant->save();
 
             // ACT
@@ -52,19 +53,21 @@
             // create a cuisine
             $c_id = null;
             $c_type = "Tex-Mex";
-            $test_cuisine = new Cuisine($c_id, $c_type);
+            $test_cuisine = new Cuisine($c_type, $c_id);
             $test_cuisine->save();
 
             // create a restaurants
             $id = null;
             $name = "El Camino";
             $cuisine_id1 = $test_cuisine->getId();
-            $test_restaurant1 = new Restaurant($id, $name, $cuisine_id1);
+            $rating1 = 5;
+            $test_restaurant1 = new Restaurant($id, $name, $cuisine_id1, $rating1);
             $test_restaurant1->save();
 
             $name = "Dos Segundos";
             $cuisine_id2 = $test_cuisine->getId();
-            $test_restaurant2 = new Restaurant($id, $name, $cuisine_id2);
+            $rating2 = 2;
+            $test_restaurant2 = new Restaurant($id, $name, $cuisine_id2, $rating2);
             $test_restaurant2->save();
 
             // ACT
@@ -80,19 +83,21 @@
             // create a cuisine
             $c_id = null;
             $c_type = "Tex-Mex";
-            $test_cuisine = new Cuisine($c_id, $c_type);
+            $test_cuisine = new Cuisine($c_type, $c_id);
             $test_cuisine->save();
 
             // create a restaurants
             $id = null;
             $name = "El Camino";
             $cuisine_id1 = $test_cuisine->getId();
-            $test_restaurant1 = new Restaurant($id, $name, $cuisine_id1);
+            $rating = 5;
+            $test_restaurant1 = new Restaurant($id, $name, $cuisine_id1, $rating);
             $test_restaurant1->save();
 
             $name2 = "Dos Segundos";
             $cuisine_id2 = $test_cuisine->getId();
-            $test_restaurant2 = new Restaurant($id, $name2, $cuisine_id2);
+            $rating = 5;
+            $test_restaurant2 = new Restaurant($id, $name2, $cuisine_id2, $rating);
             $test_restaurant2->save();
 
             // ACT
@@ -110,13 +115,14 @@
             // ARRANGE
             $c_id = null;
             $c_type = "Tex-Mex";
-            $test_cuisine = new Cuisine($c_id, $c_type);
+            $test_cuisine = new Cuisine($c_type, $c_id);
             $test_cuisine->save();
 
             $id = null;
             $name = "El Gordos";
             $cuisine_id = $test_cuisine->getId();
-            $test_restaurant = new Restaurant($id, $name, $cuisine_id);
+            $rating = 5;
+            $test_restaurant = new Restaurant($id, $name, $cuisine_id, $rating);
             $test_restaurant->save();
 
             // ACT
@@ -127,29 +133,56 @@
 
         }
 
-        function testUpdate() {
+        function testUpdateName() {
 
             //ARRANGE
             // create a cuisine
             $c_id = null;
             $c_type = "Greek";
-            $test_cuisine = new Cuisine($c_id, $c_type);
+            $test_cuisine = new Cuisine($c_type, $c_id);
             $test_cuisine->save();
 
             // create a restaurant
             $id = null;
             $name = "Kostas";
             $cuisine_id = $test_cuisine->getId();
-            $test_restaurant = new Restaurant($id, $name, $cuisine_id);
+            $rating = 5;
+            $test_restaurant = new Restaurant($id, $name, $cuisine_id, $rating);
             $test_restaurant->save();
 
             $new_name = "Costas Bar";
 
             //ACT
-            $test_restaurant->update($new_name);
+            $test_restaurant->updateName($new_name);
 
             //ASSERT
             $this->assertEquals("Costas Bar", $test_restaurant->getName());
+
+        }
+        function testUpdateRating() {
+
+            //ARRANGE
+            // create a cuisine
+            $c_id = null;
+            $c_type = "Greek";
+            $test_cuisine = new Cuisine($c_type, $c_id);
+            $test_cuisine->save();
+
+            // create a restaurant
+            $id = null;
+            $name = "Kostas";
+            $cuisine_id = $test_cuisine->getId();
+            $rating = 5;
+            $test_restaurant = new Restaurant($id, $name, $cuisine_id, $rating);
+            $test_restaurant->save();
+
+            $new_rating = 2;
+
+            //ACT
+            $test_restaurant->updateRating($new_rating);
+
+            //ASSERT
+            $this->assertEquals(2, $test_restaurant->getRating());
 
         }
 

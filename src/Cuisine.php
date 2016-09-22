@@ -2,12 +2,12 @@
 
     class Cuisine {
 
-        private $id;
         private $cuisine_type;
+        private $id;
 
-        function __construct($id = null, $cuisine_type_input) {
-            $this->id = $id;
+        function __construct($cuisine_type_input, $id = null) {
             $this->cuisine_type = $cuisine_type_input;
+            $this->id = $id;
         }
 
         function getId() {
@@ -28,7 +28,7 @@
             foreach ($returned_cuisines as $cuisine) {
                 $id = $cuisine['id'];
                 $cuisine_type = $cuisine['cuisine_type'];
-                $new_cuisine = new Cuisine($id, $cuisine_type);
+                $new_cuisine = new Cuisine($cuisine_type, $id);
                 array_push($cuisines, $new_cuisine);
             }
             return $cuisines;

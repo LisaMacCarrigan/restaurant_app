@@ -5,11 +5,21 @@
         private $id;
         private $name;
         private $cuisine_id;
+        private $rating;
 
-        function __construct($id = null, $name_input, $cuisine_id_input) {
+        function __construct($id = null, $name_input, $cuisine_id_input, $rating_input) {
             $this->id = $id;
             $this->name = $name_input;
             $this->cuisine_id = $cuisine_id_input;
+            $this->rating = $rating_input;
+        }
+
+        function getRating() {
+            return $this->rating;
+        }
+
+        function setRating($rating_input) {
+            $this->rating = $rating_input;
         }
 
         function getId() {
@@ -42,7 +52,8 @@
                 $id = $restaurant['id'];
                 $name = $restaurant['name'];
                 $cuisine_id = $restaurant['cuisine_id'];
-                $new_restaurant = new Restaurant($id, $name, $cuisine_id);
+                $rating = $restaurant['rating'];
+                $new_restaurant = new Restaurant($id, $name, $cuisine_id, $rating);
                 array_push($restaurants, $new_restaurant);
             }
 
@@ -50,7 +61,7 @@
         }
 
         function save() {
-            $GLOBALS['DB']->exec("INSERT INTO restaurant (name, cuisine_id) VALUES ('{$this->getName()}', {$this->getCuisineId()});");
+            $GLOBALS['DB']->exec("INSERT INTO restaurant (name, cuisine_id, rating) VALUES ('{$this->getName()}', {$this->getCuisineId()}, {$this->getRating()});");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
@@ -70,9 +81,14 @@
             }
         }
 
-        function update($new_name) {
+        function updateName($new_name) {
             $GLOBALS['DB']->exec("UPDATE restaurant SET name = '{$new_name}' WHERE id = {$this->getId()};");
             $this->setName($new_name);
+        }
+
+        function updateRating($new_rating) {
+            $GLOBALS['DB']->exec("UPDATE restaurant SET rating = '{$new_rating}' WHERE id = {$this->getId()};");
+            $this->setRating($new_rating);
         }
 
     }

@@ -23,7 +23,7 @@
             // ARRANGE
             $id = null;
             $cuisine_type = "Tex-Mex";
-            $test_cuisine = new Cuisine($id, $cuisine_type);
+            $test_cuisine = new Cuisine($cuisine_type, $id);
             $test_cuisine->save();
 
             // ACT
@@ -40,8 +40,8 @@
             $id = null;
             $cuisine_type1 = "Tex-Mex";
             $cuisine_type2 = "Ethiopian";
-            $test_cuisine1 = new Cuisine($id, $cuisine_type1);
-            $test_cuisine2 = new Cuisine($id, $cuisine_type2);
+            $test_cuisine1 = new Cuisine($cuisine_type1, $id);
+            $test_cuisine2 = new Cuisine($cuisine_type2, $id);
             $test_cuisine1->save();
             $test_cuisine2->save();
 
@@ -59,8 +59,8 @@
             $id = null;
             $cuisine_type1 = "Tex-Mex";
             $cuisine_type2 = "Ethiopian";
-            $test_cuisine1 = new Cuisine($id, $cuisine_type1);
-            $test_cuisine2 = new Cuisine($id, $cuisine_type2);
+            $test_cuisine1 = new Cuisine($cuisine_type1, $id);
+            $test_cuisine2 = new Cuisine($cuisine_type2, $id);
             $test_cuisine1->save();
             $test_cuisine2->save();
 
@@ -78,7 +78,7 @@
             // ARRANGE
             $id = null;
             $cuisine_type = "Tex-Mex";
-            $test_cuisine = new Cuisine($id, $cuisine_type);
+            $test_cuisine = new Cuisine($cuisine_type, $id);
             $test_cuisine->save();
 
             // ACT
@@ -93,7 +93,7 @@
             //ARRANGE
             $id = null;
             $type = "Korean";
-            $test_cuisine = new Cuisine($id, $type);
+            $test_cuisine = new Cuisine($type, $id);
             $test_cuisine->save();
 
             $new_type = "Japanese";
